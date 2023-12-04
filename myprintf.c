@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 
 	while (*p != '\0') {
 		if (*p == '%') {
-			p++;  // انتقل إلى المحول التالي
+			p++;
 			if (*p == 's') {
 				char *str = va_arg(args, char *);
 				int len = 0;
@@ -21,7 +21,6 @@ int _printf(const char *format, ...)
 
 				char *temp = (char *)malloc((len + 1) * sizeof(char));
 				if (temp == NULL) {
-					// إدارة حالة فشل الحجز
 					return -1;
 				}
 
