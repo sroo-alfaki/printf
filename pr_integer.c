@@ -3,7 +3,7 @@
 /**
  * print_integer - returns the sum of a and b
  *@num: number
- *@*printed_chars: print char or string
+ *@*printed_chars: point char or string
  *Return: always 0
  */
 void print_integer(int num, int *printed_chars)
