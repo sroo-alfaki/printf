@@ -1,40 +1,40 @@
 #include "main.h"
+
 /**
- *print_binary - returns the sum of a and b
- *@num: first number
- *@*printed_chars: char
- *Return: always 0
+ * f_binary - Print int converted to binary
+ * @args: list of variadic arguments
+ * Return: The number of printed binary
  */
-void print_binary(int num, int *printed_chars)
+int f_binary(va_list args)
 {
-	int num_bits = 0;
-	int temp = num;
+	int n = va_arg(args, int);
+	int count = 0;
 
-	if (num == 0)
+	if (n < 0)
 	{
-		num_bits = 1;
+		count += f_write('-');
+		n = -n;
 	}
-	else
+
+	if (n == 0)
 	{
-		while (temp != 0)
-		{
-			temp /= 2;
-			num_bits++;
-		}
+		count += f_write('0');
+		return (count);
 	}
-	char buffer[num_bits + 1];
-	int j = num_bits - 1;
 
-	while (num != 0)
+	int bary[32];
+	int i = 0;
+
+	while (n > 0)
 	{
-		int bit = num % 2;
-
-		buffer[j] = '0' + bit;
-		num /= 2;
-		j--;
+		bary[i++] = n % 2;
+		n /= 2;
 	}
-	buffer[num_bits] = '\0';
 
-	write(1, buffer, num_bits);
-	*printed_chars += num_bits;
+	for (int j = i - 1; j >= 0; j--)
+	{
+		count += f_write('0' + bary[j]);
+	}
+
+	return (count);
 }

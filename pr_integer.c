@@ -1,40 +1,39 @@
 #include "main.h"
-
 /**
- * print_integer - returns the sum of a and b
- *@num: number
- *@*printed_chars: point char or string
- *Return: always 0
+ * f_integer - Prints a integer
+ * @args: list of variadic arguments
+ * Return: The length of the string
  */
-void print_integer(int num, int *printed_chars)
+int f_integer(va_list args)
 {
-	int num_digits = 0;
-	int temp = num;
+	int n = va_arg(args, int);
+	int count = 0;
 
-	if (num == 0)
+	if (n < 0)
 	{
-		num_digits = 1;
+		count += f_write('-');
+		n = -n;
 	}
-	else
-	{
-		while (temp != 0)
-		{
-			temp /= 10;
-			num_digits++;
-		}
-	}
-	char buffer[num_digits + 1];
-	int j = num_digits - 1;
 
-	while (num != 0)
+	if (n == 0)
 	{
-		int digit = num % 10;
-
-		buffer[j] = '0' + digit;
-		num /= 10;
-		j--;
+		count += f_write('0');
+		return (count);
 	}
-	buffer[num_digits] = '\0';
-	write(1, buffer, num_digits);
-	*printed_chars += num_digits;
+
+	int revNum = 0;
+
+	while (n > 0)
+	{
+		revNum = revNum * 10 + n % 10;
+		n /= 10;
+	}
+
+	while (revNum > 0)
+	{
+		count += f_write('0' + revNum % 10);
+		revNum /= 10;
+	}
+
+	return (count);
 }

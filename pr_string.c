@@ -1,21 +1,22 @@
 #include "main.h"
-
 /**
- *print_string - returns print string
- *@ *str: input char
- *@*printed_chars: print char or string
- *Return: always 0
+ * f_string - Prints a string
+ * @args: list of variadic arguments
+ * Return: The length of the string
  */
-
-
-void print_string(const char *str, int *printed_chars)
+int f_string(va_list args)
 {
-	int len = 0;
+	char *s = va_arg(args, char *);
+	int count = 0;
 
-	while (str[len] != '\0')
+	if (s == NULL)
+		s = ("null");
+
+	while (*s != '\0')
 	{
-		len++;
+		count += f_write(*s);
+		s++;
 	}
-	write(1, str, len);
-	*printed_chars += len;
+
+	return (count);
 }

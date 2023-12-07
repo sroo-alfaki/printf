@@ -1,51 +1,54 @@
 #include "main.h"
+#include <stdlib.h>
 /**
- * _printf - print result
- *@*format: list of type
- * Return: int
+ * _printf - function my printf
+ * @format: list of type
+ * Return: number of chars that print
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
-
 	va_start(args, format);
-	int printed_chars = 0;
-	int i = 0;
 
-	while (format[i] != '\0')
+	int count = 0;
+	while (*format != '\0')
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			if (format[i] == 'i' || format[i] == 'd')
-				print_integer(va_arg(args, int), &printed_chars);
-			else if (format[i] == 'b')
-				print_binary(va_arg(args, int), &printed_chars);
-			else if (format[i] == 'c')
+			format++;
+			switch (*format)
 			{
-				char ch = (char)va_arg(args, int);
-
-				write(1, &ch, 1);
-				printed_chars++;
-			}
-			else if (format[i] == 's' || format[i] == 'S')
-			{
-				char *str = va_arg(args, char *);
-				int len = 0;
-
-				while (str[len] != '\0')
-					len++;
-				write(1, str, len);
-				printed_chars += len;
+				case 'c':
+					count +=f_char(args);
+					break;
+				case 's':
+					count += f_string(args);
+					break;
+				case 'd':
+				case 'i':
+					count += f_integer(args);
+					break;
+				case 'b':
+					count += f_binary(args);
+					break;
+				case '%':
+					count += f_write('%');
+					break;
+				case 'r':
+					count += f_reverse(args);
+					break;
+				default:
+					count += f_write('%');
+					count += f_write(*format);
+					break;
 			}
 		}
 		else
 		{
-			write(1, &format[i], 1);
-			printed_chars++;
+			count += f_write(*format);
 		}
-		i++;
+		format++;
 	}
 	va_end(args);
-	return (printed_chars);
+	return count;
 }
