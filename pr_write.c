@@ -1,5 +1,7 @@
 #include "main.h"
 #include <unistd.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 /**
  * f_write - writes the character c to stdout

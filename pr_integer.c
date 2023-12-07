@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+
 /**
  * f_integer - Prints a integer
  * @args: list of variadic arguments

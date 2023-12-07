@@ -1,5 +1,8 @@
 #include "main.h"
 #include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+
 /**
  * f_char - Print a char
  * @args: list of variadic arguments
