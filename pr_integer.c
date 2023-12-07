@@ -1,7 +1,5 @@
 #include "main.h"
 #include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
 
 /**
  * f_integer - Prints a integer
@@ -12,6 +10,7 @@ int f_integer(va_list args)
 {
 	int n = va_arg(args, int);
 	int count = 0;
+	int revNum = 0;
 
 	if (n < 0)
 	{
@@ -24,8 +23,6 @@ int f_integer(va_list args)
 		count += f_write('0');
 		return (count);
 	}
-
-	int revNum = 0;
 
 	while (n > 0)
 	{
