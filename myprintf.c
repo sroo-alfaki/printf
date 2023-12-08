@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list args;
+
 	va_start(args, format);
 
 	while (*format != '\0')
@@ -19,7 +20,7 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					count +=f_char(args);
+					count += f_char(args);
 					break;
 				case 's':
 					count += f_string(args);
@@ -31,12 +32,18 @@ int _printf(const char *format, ...)
 				case 'b':
 					count += f_binary(args);
 					break;
-				case '%':
-					count += f_write('%');
-					break;
 				case 'r':
 					count += f_reverse(args);
 					break;
+				case 'p':
+					count += f_pointer(args);
+					break;
+				case 'R':
+					count += f_rot13(args);
+					break;
+				case '%':
+                                        count += f_write('%');
+                                        break;
 				default:
 					count += f_write('%');
 					count += f_write(*format);
@@ -50,5 +57,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	return count;
+	return (count);
 }
