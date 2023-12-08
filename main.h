@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <limits.h>
 
 int f_write(char c);
 int _printf(const char *format, ...);
