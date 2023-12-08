@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 /**
  * _printf - function my printf
  * @format: list of type
