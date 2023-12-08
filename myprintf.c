@@ -12,44 +12,24 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && *(++format))
 		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					count += f_char(args);
-					break;
-				case 's':
-					count += f_string(args);
-					break;
-				case 'd':
-				case 'i':
-					count += f_integer(args);
-					break;
-				case 'b':
-					count += f_binary(args);
-					break;
-				case 'r':
-					count += f_reverse(args);
-					break;
-				case 'p':
-					count += f_pointer(args);
-					break;
-				case 'R':
-					count += f_rot13(args);
-					break;
-				case '%':
-					count += f_write('%');
-					break;
-				default:
-					count += f_write('%');
-					count += f_write(*format);
-					break;
-			}
+			if (*format == 'c')
+				count += f_char(args);
+			else if (*format == 's')
+				count += f_string(args);
+			else if (*format == 'd' || *format == 'i')
+				count += f_integer(args);
+			else if (*format == 'b')
+				count += f_binary(args);
+			else if (*format == 'p')
+				count += f_pointer(args);
+			else if (*format == 'R')
+				count += f_rot13(args);
+			else
+				count += f_write(*format);
 		}
 		else
 		{
