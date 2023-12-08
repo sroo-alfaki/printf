@@ -11,8 +11,8 @@
 int f_pointer(va_list args)
 {
 	void *ptr = va_arg(args, void *);
-	unsigned long long address = (unsigned long long)ptr;
-	int j ,i = 0 ,count = 0;
+	unsigned long address = (unsigned long)ptr;
+	int j, i = 0, count = 0;
 	char hex[16];
 
 	count += f_write('0');
@@ -20,15 +20,15 @@ int f_pointer(va_list args)
 
 	while (address > 0)
 	{
-		int remainder = address % 16;
+		int rem = address % 16;
 
-		if (remainder < 10)
+		if (rem < 10)
 		{
-			hex[i++] = '0' + remainder;
+			hex[i++] = '0' + rem;
 		}
 		else
 		{
-			hex[i++] = 'a' + (remainder - 10);
+			hex[i++] = 'a' + (rem - 10);
 		}
 		address /= 16;
 	}

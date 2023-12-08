@@ -42,8 +42,8 @@ int _printf(const char *format, ...)
 					count += f_rot13(args);
 					break;
 				case '%':
-                                        count += f_write('%');
-                                        break;
+					count += f_write('%');
+					break;
 				default:
 					count += f_write('%');
 					count += f_write(*format);

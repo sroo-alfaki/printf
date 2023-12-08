@@ -10,7 +10,7 @@ int f_binary(va_list args)
 	int n = va_arg(args, int);
 	int count = 0;
 	int bary[32];
-        int j, i = 0;
+	int j, i = 0;
 
 	if (n < 0)
 	{
@@ -30,7 +30,7 @@ int f_binary(va_list args)
 		n /= 2;
 	}
 
-	for ( j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		count += f_write('0' + bary[j]);
 	}
