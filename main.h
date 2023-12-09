@@ -16,4 +16,8 @@ int f_reverse(va_list args);
 int f_pointer(va_list args);
 int f_rot13(va_list args);
 int f_sstring(va_list args);
+int f_unsig(va_list args);
+int f_octal(va_list args);
+int f_hex_lower(va_list args);
+int f_hex_upper(va_list args);
 #endif

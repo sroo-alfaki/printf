@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'S')
 				count += f_sstring(args);
 			else if (*format == 'u')
-				count += f_unsigned(args);
+				count += f_unsig(args);
 			else if (*format == 'o')
 				count += f_octal(args);
 			else if (*format == 'x')

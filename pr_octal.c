@@ -8,9 +8,7 @@
 int f_octal(va_list args)
 {
 	int n = va_arg(args, int);
-	int count = 0;
-	int oct[32];
-	int i = 0;
+	int count = 0, oct[32], i = 0, j;
 
 	if (n < 0)
 	{
@@ -31,7 +29,7 @@ int f_octal(va_list args)
 		i++;
 	}
 
-	for (int j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		count += f_write('0' + oct[j]);
 	}

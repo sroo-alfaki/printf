@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * f_unsigned - Print int unsigned
+ * f_unsig - Print int unsigned
  * @args: list of variadic arguments
  * Return: The number of unsigned
  */
-int f_unsigned(va_list args)
+int f_unsig(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	int count = 0;
