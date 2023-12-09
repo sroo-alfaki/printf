@@ -26,8 +26,9 @@ int f_binary(va_list args)
 
 	while (n > 0)
 	{
-		bary[i++] = n % 2;
+		bary[i] = n % 2;
 		n /= 2;
+		i++;
 	}
 
 	for (j = i - 1; j >= 0; j--)
