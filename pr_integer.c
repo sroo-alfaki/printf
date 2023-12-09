@@ -1,5 +1,9 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdint.h>
+#include <limits.h>
 
 /**
  * f_integer - Prints a integer
