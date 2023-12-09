@@ -15,4 +15,5 @@ int f_binary(va_list args);
 int f_reverse(va_list args);
 int f_pointer(va_list args);
 int f_rot13(va_list args);
+int f_sstring(va_list args);
 #endif
