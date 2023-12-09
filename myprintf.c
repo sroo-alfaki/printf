@@ -30,6 +30,16 @@ int _printf(const char *format, ...)
 				count += f_pointer(args);
 			else if (*format == 'R')
 				count += f_rot13(args);
+			else if (*format == 'S')
+				count += f_sstring(args);
+			else if (*format == 'u')
+				count += f_unsigned(args);
+			else if (*format == 'o')
+				count += f_octal(args);
+			else if (*format == 'x')
+				count += f_hex_lower(args);
+			else if (*format == 'X')
+				count += f_hex_upper(args);
 			else
 				count += f_write(*format);
 		}
