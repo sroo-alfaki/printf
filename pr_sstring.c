@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 /**
  * f_sstring - Prints a string
  * @args: list of variadic arguments
