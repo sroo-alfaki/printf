@@ -1,5 +1,9 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdint.h>
+#include <limits.h>
 /**
  * f_binary - Print int converted to binary
  * @args: list of variadic arguments
