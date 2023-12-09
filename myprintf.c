@@ -18,30 +18,18 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%' && *(++format))
 		{
-			if (*format == 'c')
-				count += f_char(args);
-			else if (*format == 's')
-				count += f_string(args);
-			else if (*format == 'd' || *format == 'i')
-				count += f_integer(args);
-			else if (*format == 'b')
-				count += f_binary(args);
-			else if (*format == 'p')
-				count += f_pointer(args);
-			else if (*format == 'R')
-				count += f_rot13(args);
-			else if (*format == 'S')
-				count += f_sstring(args);
-			else if (*format == 'u')
-				count += f_unsig(args);
-			else if (*format == 'o')
-				count += f_octal(args);
-			else if (*format == 'x')
-				count += f_hex_lower(args);
-			else if (*format == 'X')
-				count += f_hex_upper(args);
-			else
-				count += f_write(*format);
+			count += (*(format) == 'c') ? f_char(args) :
+				(*(format) == 's') ? f_string(args) :
+				(*(format) == 'd' || *(format) == 'i') ? f_integer(args) :
+				(*(format) == 'b') ? f_binary(args) :
+				(*(format) == 'p') ? f_pointer(args) :
+				(*(format) == 'u') ? f_unsig(args) :
+				(*(format) == 'S') ? f_sstring(args) :
+				(*(format) == 'x') ? f_hex_lower(args) :
+				(*(format) == 'X') ? f_hex_upper(args) :
+				(*(format) == 'o') ? f_octal(args) :
+				(*(format) == 'R') ? f_rot13(args) :
+				f_write(*format);
 		}
 		else
 		{
